@@ -21,6 +21,8 @@ public class SecurityConfig {
         return httpSecurity.httpBasic()
                 .and()
                 .addFilterBefore(new ApiKeyFilter(key), BasicAuthenticationFilter.class)
+                .authorizeRequests().anyRequest().authenticated()
+                .and()
                 .build();
     }
 }
